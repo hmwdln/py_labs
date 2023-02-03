@@ -13,11 +13,9 @@ sites = {
 # расстояние на координатной сетке - ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
 
 distances = {}
-
 # TODO здесь заполнение словаря
+distances['Between Moscow and London'] = ((sites['Moscow'][0] - sites['London'][0]) ** 2 + (sites['Moscow'][1] - sites['London'][1]) ** 2) ** 0.5
+distances['Between Moscow and Paris'] = ((sites['Moscow'][0] - sites['Paris'][0]) ** 2 + (sites['Moscow'][1] - sites['Paris'][1]) ** 2) ** 0.5
+distances['Between London and Paris'] = ((sites['London'][0] - sites['Paris'][0]) ** 2 + (sites['London'][1] - sites['Paris'][1]) ** 2) ** 0.5
 
-print(distances)
-
-
-
-
+print(distances['Between London and Paris'])
