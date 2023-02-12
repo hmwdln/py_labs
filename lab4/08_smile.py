@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # (определение функций)
-import simple_draw
+import simple_draw as sd
 
 # Написать функцию отрисовки смайлика по заданным координатам
 # Форма рожицы-смайлика на ваше усмотрение
@@ -11,4 +11,13 @@ import simple_draw
 
 # TODO здесь ваш код
 
-simple_draw.pause()
+sd.resolution = (600, 600)
+
+for i in range(1, 11):
+    s = sd.random_point()
+    point_list = [sd.Point(s.x - 15, s.y - 5), sd.Point(s.x - 8, s.y - 10), sd.Point(s.x + 8, s.y - 10), sd.Point(s.x + 15, s.y - 5)]
+    sd.circle(center_position = s, radius = 50)
+    sd.circle(center_position = sd.Point(s.x - 20, s.y + 20), radius = 12)
+    sd.circle(center_position = sd.Point(s.x + 20, s.y + 20), radius = 12)
+    sd.lines(point_list)
+sd.pause()

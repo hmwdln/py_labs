@@ -13,3 +13,14 @@
 educational_grant, expenses = 10000, 12000
 
 # TODO здесь ваш код
+
+month = 9
+need = expenses
+count = 0
+while month > 0:
+    need *= 1.03
+    count += need
+    month -= 1
+count += expenses - educational_grant # нужно в первый месяц
+count -= educational_grant * 9 # с учетом стипендии
+print('Студенту надо попросить', round(count, 2), 'рублей')
