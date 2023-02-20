@@ -23,11 +23,13 @@ def num_eights(x):
     True
     """
     "*** YOUR CODE HERE ***"
-    if x // 10 > 0:
-        return (1 if x % 10 == 8 else 0) + num_eights(x // 10)
+    if x == 0:
+        return 0
+    elif x % 10 == 8:
+        return 1 + num_eights(x // 10)
     else:
-        if x % 10 == 8:
-            return 1
+        return num_eights(x // 10)
+    
 
 def pingpong(n):
     """Написать функцию на python, которая возвращает n-ый элемент пинг-понг последовательности, используя только рекурсию
@@ -73,15 +75,23 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
-    def _pingpong(n, direction, value):
-        if n == 1:
-            return value
-        if n % 8 in [0, 1] or '8' in str(n):
-            direction = -direction
-        return _pingpong(n - 1, direction, value + direction)
-    return _pingpong(n, 1, 1)
+    def next_number(current, direction, i):
+        if i == n:
+            return current
+        if i % 8 == 0 or has_eight(i):
+            return next_number(current - direction, -direction, i+1)
+        else:
+            return next_number(current + direction, direction, i+1)
 
-print(pingpong(68))
+    def has_eight(k):
+        if k % 10 == 8:
+            return True
+        elif k < 10:
+            return False
+        else:
+            return has_eight(k // 10)
+
+    return next_number(1, 1, 1)
 
 
 def missing_digits(n):
@@ -111,11 +121,17 @@ def missing_digits(n):
     True
     """
     "*** YOUR CODE HERE ***"
-    if n > 10:
-        if n % 10 == (n % 100) // 10 or n % 10 == ((n % 100) // 10) + 1:
-            return missing_digits(n//10)
-        return missing_digits(n-1) + 1
-    return 0
+    def count_missing_digits(s, i):
+        if i == len(s) - 1:
+            return 0
+        if s[i] == s[i + 1]:
+            return count_missing_digits(s, i + 1)
+        else:
+            diff = int(s[i + 1]) - int(s[i])
+            return diff - 1 + count_missing_digits(s, i + 1)
+
+    s = str(n)
+    return count_missing_digits(s, 0)
 
 def next_largest_coin(coin):
     """Возвращает следующую монету.
@@ -133,8 +149,9 @@ def next_largest_coin(coin):
         return 10
     elif coin == 10:
         return 25
-
-
+    else:
+        return None
+    
 def count_coins(total):
     """Возвращает кол-во вариантов размена total используя монеты по 1, 5, 10, 25 коп.
 
@@ -161,6 +178,14 @@ def count_coins(total):
     True
     """
     "*** YOUR CODE HERE ***"
+    def count_helper(total, coins):
+        if total == 0:
+            return 1
+        elif total < 0 or not coins:
+            return 0
+        else:
+            return count_helper(total, coins[1:]) + count_helper(total - coins[0], coins)
+    return count_helper(total, [1, 5, 10, 25])
 
 
 from operator import sub, mul
@@ -176,4 +201,4 @@ def make_anonymous_factorial():
     True
     """
     return (lambda f: lambda n: 1 if n == 0 else n * f(f)(n - 1))(lambda f: lambda n: 1 if n == 0 else n * f(f)(n - 1))
-    
+
