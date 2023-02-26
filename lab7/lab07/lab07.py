@@ -44,9 +44,6 @@ def summation(n, term):
         return term(1)
     else:
         return term(n) + summation(n - 1, term)
-    
-print(summation(5, lambda x: 2 ** x))
-
 
 def paths(m, n):
     """Возвращает число путей из нижнего левого угла сетки M x N с координатами (0, 0)
@@ -74,9 +71,15 @@ def paths(m, n):
     1
     """
     "*** YOUR CODE HERE ***"
+    if m < 1 or n < 1:
+        return None
+    grid = [[1] * n for _ in range(m)]
+    for i in range(1, m):
+        for j in range(1, n):
+            grid[i][j] = grid[i-1][j] + grid[i][j-1]
+    return grid[m-1][n-1]
 
-
-
+import itertools
 def max_subseq(n, t):
     """
     Возвращает максимальную по значению подпоследовательность длины в интервале [1, t],
@@ -123,8 +126,18 @@ def max_subseq(n, t):
     5
     """
     "*** YOUR CODE HERE ***"
-
-
+    if t == 0:
+        return 0
+    elif t >= len(str(n)):
+        return n
+    else:
+        max_num = 0
+        for combo in itertools.combinations(str(n), t):
+            num = int(''.join(combo))
+            if num > max_num:
+                max_num = num
+        return max_num
+    
 def add_chars(w1, w2):
     """
     Необязательное задание.
