@@ -32,7 +32,7 @@ sd.resolution = (1200, 600)
 starting_point = sd.Point(600, 0)
 
 def draw_branches(cur_point, cur_angle, cur_length):
-    if cur_length < 1:
+    if cur_length < 10:
         return None
 
     first_vector = sd.get_vector(cur_point, cur_angle, cur_length)

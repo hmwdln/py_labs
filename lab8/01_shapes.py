@@ -37,6 +37,30 @@ import simple_draw as sd
 # Результат решения см results/exercise_01_shapes.jpg
 
 # TODO здесь ваш код
+sd.resolution = (600, 600)
+point1 = sd.Point(100, 100)
+for i in range(0, 361, 120):
+    v1 = sd.get_vector(start_point=point1, angle=i, length=100, width=3)
+    v1.draw()
+    point1 = v1.end_point
+
+point2 = sd.Point(400, 100)
+for i in range(0, 361, 90):
+    v2 = sd.get_vector(start_point=point2, angle=i, length=100, width=3)
+    v2.draw()
+    point2 = v2.end_point
+
+point3 = sd.Point(100, 350)
+for i in range(0, 361, 72):
+    v3 = sd.get_vector(start_point=point3, angle=i, length=100, width=3)
+    v3.draw()
+    point3 = v3.end_point
+
+point4 = sd.Point(400, 350)
+for i in range(0, 361, 60):
+    v4 = sd.get_vector(start_point=point4, angle=i, length=100, width=3)
+    v4.draw()
+    point4 = v4.end_point
 
 # Часть 1-бис.
 # Попробуйте прикинуть обьем работы, если нужно будет внести изменения в этот код.
