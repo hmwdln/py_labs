@@ -17,5 +17,3 @@ def smile():
     sd.line(sd.get_point(1120, 85), sd.get_point(1140, 65)) # правая рука
     sd.line(sd.get_point(1120, 50), sd.get_point(1100, 25)) # левая нога
     sd.line(sd.get_point(1120, 50), sd.get_point(1140, 25)) # правая нога
-
-smile()

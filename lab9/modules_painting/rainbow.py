@@ -12,5 +12,3 @@ def rainbow():
     for i in range(0, 7):
         pos_y -= 10
         sd.circle(center_position = sd.Point(pos_x, pos_y), radius = 1800, color = rainbow_colors[i], width = 15)
-
-rainbow()

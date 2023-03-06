@@ -36,5 +36,3 @@ def snow():
 
         if sd.user_want_exit():
             break
-
-snow()

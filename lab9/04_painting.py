@@ -35,4 +35,12 @@ from modules_painting import sun
 from modules_painting import snowflakes
 
 
+house.house()
+floor.floor()
+human.smile()
+rainbow.rainbow()
+tree.tree()
+sun.draw_sun()
+snowflakes.snow()
+
 sd.pause()

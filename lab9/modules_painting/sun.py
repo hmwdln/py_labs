@@ -17,5 +17,3 @@ def draw_sun():
             ray_start_position.y + ray_length * sd.cos(angle)
         )
         sd.line(ray_start_position, ray_end_position, width=3, color=sd.COLOR_YELLOW)
-
-draw_sun()
